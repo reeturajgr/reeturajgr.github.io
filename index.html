@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Reetu Raj G R</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF7F0;
+            --charcoal: #1A1A1A;
+            --rust: #C85B3F;
+            --olive: #7C8F6B;
+            --sand: #D4C5B0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+     
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, var(--cream) 0%, rgba(250, 247, 240, 0.95) 70%, transparent 100%);
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rust);
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            line-height: 0.95;
+            margin-bottom: 2rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 .highlight {
+            color: var(--rust);
+            font-style: italic;
+            display: inline-block;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
+        }
+
+        .hero h1 .line {
+            display:block;
+			font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+			font-size: 80px;
+            overflow: hidden;
+        }
+
+        .hero h1 .line span {
+            display: inline-block;
+            animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        }
+
+        .hero h1 .line:nth-child(1) span { animation-delay: 0.1s; }
+        .hero h1 .line:nth-child(2) span { animation-delay: 0.2s; }
+        .hero h1 .line:nth-child(3) span { animation-delay: 0.3s; }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            color: #555;
+            animation: fadeIn 1s ease 0.6s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease 0.8s backwards;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--rust);
+            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 2rem;
+            color: var(--rust);
+        }
+		.hero .highlight {
+    color: var(--rust);
+    font-style: italic;
+}
+
+        /* About Section */
+        .about {
+            padding: 8rem 4rem;
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 0.6rem 1.2rem;
+            background: rgba(200, 91, 63, 0.2);
+            border: 1px solid var(--rust);
+            color: var(--rust);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .about-image {
+            position: relative;
+			width: 600px;
+            height: 600px;
+            background: var(--sand);
+            border-radius: 2px;
+            overflow: hidden;
+			border: 2px solid var(--rust);
+			margin: auto;
+			
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            
+            z-index: 1;
+			
+        }
+		.myimage{
+			margin: auto;
+			align-items: center;
+			display: flex;
+			margin-top: 40px;
+		}
+
+        /* Projects Section */
+        .projects {
+            padding: 8rem 4rem;
+        }
+
+        .projects h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 2px solid var(--charcoal);
+            color: var(--charcoal);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--charcoal);
+            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: -1;
+        }
+
+        .category-btn:hover::before,
+        .category-btn.active::before {
+            left: 0;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            color: var(--cream);
+        }
+
+        .projects-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card { 
+			position: relative; 
+			overflow: hidden;
+			aspect-ratio: 4/3; 
+			background: var(--sand); 
+			cursor: pointer; 
+			transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+		}
+		#project-card1
+		{
+			 background-image: url( "hb.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+		}
+		#project-card2
+		{
+			 background-image: url("wt2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+		}
+		#project-card3
+		{
+			 background-image: url( "pp1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+		}
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem;
+            background: linear-gradient(to top, rgba(26, 26, 26, 0.95), transparent);
+            color: var(--cream);
+            transform: translateY(60%);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--rust);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+		.project-tag1{
+			padding: 0.3rem 0.8rem;
+            background: var(--rust);
+            font-size: 0.8rem;
+            font-weight: 500;
+			text-decoration: none;
+			color: white;
+			display: inline-block;
+	        font-weight: bold;
+			
+	
+		} 
+		#project-card4
+		{
+			 background-image: url("magazine5.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+		}
+		#project-card5
+		{
+			 background-image: url( "text3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+		}
+			#project-card6
+		{
+			 background-image: url( "socialad4.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+		}
+			#project-card7
+		{
+			 background-image: url( "website.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+		}
+		#project-card8
+		{
+			 background-image: url( "redesign.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+		}
+		.project-tag1 a{
+			display: inline-block;
+	font-weight: bold;
+	text-decoration: none;
+	color:white;
+		}
+		
+		.project-tag1 a:hover{
+			display: inline-block;
+	font-weight: bold;
+	text-decoration: none;
+	color:white;
+		}
+		
+        /* Contact Section */
+        .contact {
+            padding: 8rem 4rem;
+            background: var(--olive);
+            color: var(--cream);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .contact p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            padding: 1.2rem 3rem;
+            background: var(--cream);
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .contact-link:hover {
+            background: var(--rust);
+            color: var(--cream);
+            transform: translateY(-4px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 4rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* Responsive */
+        /* ------------------ RESPONSIVE IMPROVEMENTS ------------------ */
+
+/* Tablets */
+@media (max-width: 1024px) {
+
+    .hero h1 .line {
+        font-size: 56px;
+    }
+
+    .about-image {
+        width: 420px;
+        height: 420px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+	.about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .about-image {
+        order: 1;
+        width: 350px;
+        height: 350px;
+    }
+
+    .about-container > div:first-child {
+        order: 2;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    nav {
+        padding: 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1.2rem;
+    }
+
+    /* HERO */
+    .hero {
+        padding: 2rem 1.5rem;
+        text-align: center;
+    }
+
+    .hero h1 .line {
+        font-size: 42px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin: 2rem auto;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* ABOUT */
+    .about-container {
+        text-align: center;
+    }
+	.about {
+        padding: 4rem 1.5rem;
+    }
+
+    .about-image {
+        width: 280px;
+        height: 280px;
+    }
+
+    .myimage {
+        width: 90%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    /* PROJECTS */
+    .projects {
+        padding: 4rem 1.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-overlay {
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(26,26,26,0.9), rgba(26,26,26,0.6));
+    }
+
+    /* CONTACT */
+    .contact {
+        padding: 4rem 1.5rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+	
+}
+
+
+/* -------- HAMBURGER MENU -------- */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: var(--charcoal);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav {
+        flex-direction: row;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--cream);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 0;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+		footer {
+    padding: 3rem;
+    background: var(--charcoal);
+    color: var(--cream);
+    text-align: center;
+}
+
+
+    </style>
+</head>
+<body>
+   
+	<nav>
+    <div class="logo">Reetu Raj G R</div>
+
+    <!-- Hamburger -->
+    <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="line"><span>Designing digital</span></span>
+                <span class="line"><span>experiences with</span></span>
+                <span class="line"><span class="highlight">purpose</span></span>
+            </h1>
+            <p class="hero-subtitle">UI/UX,Web Designer &  Graphic blending interaction, visuals, and storytelling into digital experiences..</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-container">
+            <div>
+                <h2>About Me</h2>
+                <div class="about-text">
+                    <p>I'm Reetu Raj G R, a UX Designer and Full Stack Developer based in Mysore, Karnataka. Currently pursuing M.Sc. in Visual Communication (Animation and Design) at Amrita Vishwa Vidyapeetham, I blend technical expertise with creative design thinking.</p>
+                    <p>With a Bachelor's in Computer Application (CGPA: 8.75) and hands-on experience in web development and UX design, I create digital products that are both visually compelling and functionally robust. My approach focuses on user-centered design, innovative problem-solving, and delivering meaningful experiences.</p>
+                </div>
+                <div class="skills">
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Adobe XD</span>
+					<span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">Prototyping</span>
+                    <span class="skill-tag">Wireframing</span>
+                    <span class="skill-tag">Adobe Photoshop</span>
+					<span class="skill-tag">Adobe Dreamweaver</span>
+					<span class="skill-tag">Leadership</span>
+					<span class="skill-tag">Web Application Design</span>
+					
+					
+                </div>
+            </div>
+            <div class="about-image">
+           <img src="final.jpg" width="500" height="500"  class="myimage" alt=""/></div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Selected Work</h2>
+        
+        <div class="category-filters">
+            <button class="category-btn active" data-category="all">All Projects</button>
+            <button class="category-btn" data-category="uiux">UI/UX Design</button>
+            <button class="category-btn" data-category="graphic">Graphic Design</button>
+            <button class="category-btn" data-category="web">Web Development</button>
+        </div>
+
+        <div class="projects-grid">
+            <!-- UI/UX Projects -->
+            <div class="project-card" id="project-card1" data-category="uiux">
+                <div class="project-overlay">
+                    <h3>HemoBridge</h3>
+                    <p>Blood donation app concept featuring rewards system, at-home collection, doorstep scheduling, and targeted alerts based on blood type needs.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">UI/UX Design</span>
+                        <span class="project-tag">Adobe XD</span>
+						<span class="project-tag1"><a href="https://drive.google.com/file/d/1KSzB-do6OK6WfIhJBLInVecNbxfw4Qpi/view?usp=sharing">View</a></span>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" id="project-card2" data-category="uiux">
+                <div class="project-overlay">
+                    <h3>WhatsApp Proactive Messaging</h3>
+                    <p>Feature suite with scheduled messages and offline auto-replies. Created high-fidelity mockups with detailed design specifications for developer handoff.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">UI/UX Design</span>
+                        <span class="project-tag">Adobe XD</span>
+                        <span class="project-tag1"><a href="https://drive.google.com/file/d/1BmUMrvDhPt3gp1rdIqBBSB_JiQKRQEPf/view?usp=sharing">View</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" id="project-card3" data-category="uiux">
+                <div class="project-overlay">
+                    <h3>PixelPath</h3>
+                    <p>Group travel app with photo sync, live location tracking, and expense sharing. Designed core UX with focus on seamless group coordination.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">UI/UX Design</span>
+                        <span class="project-tag">Adobe XD</span>
+                        <span class="project-tag1"><a href="https://drive.google.com/file/d/1YbCyjgaTAXy6rSWrXwo7uc6FFk1JXzvI/view?usp=sharing">View</a></span>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="project-card" id="project-card4" data-category="graphic">
+                <div class="project-overlay">
+                    <h3>Magzine Cover Page</h3>
+                    <p>Exploring visual design through logos, illustrations, and print layouts using Adobe Creative Suite.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Photoshop</span>
+                        <span class="project-tag1" ><a href="https://www.behance.net/gallery/231915163/Magazine">View</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" id="project-card5" data-category="graphic">
+                <div class="project-overlay">
+                    <h3>Text Image Interaction</h3>
+                    <p>Vector illustrations and digital artwork for various media, showcasing creative design and technical proficiency.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Photoshop</span>
+                        <span class="project-tag1">
+							<a href="https://www.behance.net/gallery/231915547/Text-Interaction">View</a></span>
+                     
+                    </div>
+                </div>
+            </div>
+            <div class="project-card"  id="project-card6" data-category="graphic">
+                <div class="project-overlay">
+                    <h3>Social media Ads</h3>
+                    <p>Print layouts, brochures, and digital marketing materials with attention to typography and visual hierarchy.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Photoshop</span>
+                        <span class="project-tag1"><a href="https://www.behance.net/gallery/231915349/Social-media-ads">View</a></span>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="project-card" id="project-card7" data-category="web">
+                <div class="project-overlay">
+                    <h3>Luxe Fashion Brand</h3>
+                    <p>Built using Bootstrap, the LUXE website blends modern web design with high-end fashion aesthetics.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Adobe Dreamweaver</span>
+                        <span class="project-tag">Bootstrap method</span>
+                        <span class="project-tag">Responsive Layout</span>
+						  <span class="project-tag1"><a href="https://drive.google.com/drive/folders/1VlZnoD0eA6t1OYdI1OnA1jHrEBYJnlQH?usp=sharing">View</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" id="project-card8"  data-category="web">
+                <div class="project-overlay">
+                    <h3>Website Redesign</h3>
+                    <p>Dedicated About Us and Contact Us pages were separately designed using Photoshop to enhance the website’s visual appeal and user experience.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Photoshop</span>
+                        <span class="project-tag">Layout design</span>
+						  <span class="project-tag1"><a href="https://drive.google.com/drive/folders/1YpQKIWb0b_KrOdhBtgZlMgUFCAF_Uh-G?usp=sharing">View</a></span>
+                     
+                    </div>
+                </div>
+            </div>
+		</div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2>Let's Connect</h2>
+            <p>Have a project in mind or just want to chat? I'd love to hear from you.</p>
+            <div class="contact-links">
+                <a href="mailto:reeturajgr@gmail.com" class="contact-link">Email Me</a>
+                <a href="https://www.linkedin.com/in/reetu-raj-g-r-9b28042a5/" class="contact-link" target="_blank">LinkedIn</a>
+                <a href="https://www.behance.net/reeturajgr" class="contact-link" target="_blank">Behance</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Reetu Raj G R. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Category filtering functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+
+                projectCards.forEach(card => {
+                    if (category === 'all') {
+                        card.classList.remove('hidden');
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        if (card.getAttribute('data-category') === category) {
+                            card.classList.remove('hidden');
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            setTimeout(() => {
+                                card.classList.add('hidden');
+                            }, 400);
+                        }
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+		// Hamburger Menu Toggle
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+    </script>
+</body>
+</html>
